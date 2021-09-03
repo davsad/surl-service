@@ -1,0 +1,6 @@
+com/surl/service/jpa/entity/Surl.class
+com/surl/service/jpa/config/SurlRepositoryConfig.class
+com/surl/service/jpa/impl/SurlRepositoryImpl.class
+com/surl/service/jpa/api/SurlRepository.class
+com/surl/service/jpa/api/BaseRepository.class
+com/surl/service/jpa/impl/RecordManager.class

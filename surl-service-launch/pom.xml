@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.surl</groupId>
+		<artifactId>surl-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.surl.launch</groupId>
+	<artifactId>surl-serivce-launch</artifactId>
+	<name>Start Dockers</name>
+	<description>Starts the docker images</description>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<configuration>
+					<apiVersion>4.4.1</apiVersion>
+					<images>
+						<image>
+							<name>surl/mysql</name>
+							<alias>surlmysql</alias>
+							<run>
+								<hostname>surlmysql</hostname>
+								<volumes>
+									<bind>
+										<!-- should bind data to somewhere safe <volume></volume> -->
+									</bind>
+								</volumes>
+								<wait>
+									<time>30000</time>
+									<tcp>
+										<host>surlmysql</host>
+										<mode>direct</mode>
+										<ports>
+											<port>3306</port>
+										</ports>
+									</tcp>
+								</wait>
+								<ports>
+									<port>3306:3306</port>
+								</ports>
+							</run>
+						</image>
+						<image>
+							<name>surl/service</name>
+							<alias>surl-service</alias>
+							<run>
+								<dependsOn>
+									<container>surlmysql</container>
+								</dependsOn>
+								<links>
+								    <!--  Will add surlmysql entry to /etc/hosts -->
+									<link>surl/mysql</link>
+								</links>
+								<env>
+									<MYSQL_HOST>surlmysql</MYSQL_HOST>
+								</env>
+								<hostname>surl-service</hostname>
+								<ports>
+									<port>8080:8080</port>
+								</ports>
+							</run>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>docker-start</id>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>docker-stop</id>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

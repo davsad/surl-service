@@ -1,0 +1,6 @@
+/home/davsad/eclipse-workspace/surl-service/surl-service-jpa/src/main/java/com/surl/service/jpa/entity/Surl.java
+/home/davsad/eclipse-workspace/surl-service/surl-service-jpa/src/main/java/com/surl/service/jpa/impl/RecordManager.java
+/home/davsad/eclipse-workspace/surl-service/surl-service-jpa/src/main/java/com/surl/service/jpa/impl/SurlRepositoryImpl.java
+/home/davsad/eclipse-workspace/surl-service/surl-service-jpa/src/main/java/com/surl/service/jpa/api/SurlRepository.java
+/home/davsad/eclipse-workspace/surl-service/surl-service-jpa/src/main/java/com/surl/service/jpa/api/BaseRepository.java
+/home/davsad/eclipse-workspace/surl-service/surl-service-jpa/src/main/java/com/surl/service/jpa/config/SurlRepositoryConfig.java
