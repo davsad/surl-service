@@ -1,9 +1,12 @@
 Project contains build for surl service docker image and mysql docker image.
 
-To trigger build with no deploy: 
+To trigger build with no dockers: 
 	mvn clean install -Ddocker.skip
-To trigger build with docker build and deploy:
+
+To trigger build and run dockers:
 	mvn clean install
+	
+To build single docker, cd into module: mvn docker:build
 	
 Surl Service is available at localhost:8080/
 Mysql will create tables and default user
